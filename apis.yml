@@ -1,0 +1,246 @@
+aid: sourcegraph
+name: Sourcegraph
+description: Sourcegraph is a code intelligence platform that lets developers and AI agents search, navigate, understand,
+  and modify code across very large, multi-repo codebases. The platform pairs classic code search and code intelligence (jump-to-definition,
+  references, batch changes) with AI products — Cody (in-IDE AI coding assistant), Amp (frontier coding agent with its own
+  CLI and plugin system), and Deep Search (a natural-language code research agent). Sourcegraph instances expose a versioned
+  external REST API introduced in v7.0, a streaming search API, an analytics API, webhooks, an MCP server, and the historical
+  GraphQL API kept available for migration. The src CLI is the long-standing command-line client.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+- Code Intelligence
+- Code Search
+- Cody
+- Amp
+- AI Coding Agent
+- GraphQL
+- REST API
+- MCP
+url: https://raw.githubusercontent.com/api-evangelist/sourcegraph/refs/heads/main/apis.yml
+created: '2026-05-23'
+modified: '2026-05-23'
+specificationVersion: '0.19'
+apis:
+- aid: sourcegraph:sourcegraph-rest-api
+  name: Sourcegraph REST API
+  description: Versioned external REST API introduced in Sourcegraph 7.0 and intended as the stable integration surface going
+    forward. Each Sourcegraph instance exposes its own /api-reference path where the live OpenAPI schema is published. Backwards
+    compatibility is guaranteed within a major version.
+  humanURL: https://sourcegraph.com/docs/api
+  tags:
+  - REST API
+  - OpenAPI
+  - Code Intelligence
+  properties:
+  - type: Documentation
+    url: https://sourcegraph.com/docs/api
+  - type: APIReference
+    url: https://sourcegraph.com/api-reference
+- aid: sourcegraph:sourcegraph-graphql-api
+  name: Sourcegraph GraphQL API
+  description: The historical GraphQL API used by most Sourcegraph integrations to date. It is still available but Sourcegraph
+    now recommends migrating to the versioned REST API for compatibility guarantees. Also exposed as a debug surface inside
+    each instance.
+  humanURL: https://sourcegraph.com/api/graphql
+  tags:
+  - GraphQL
+  - Code Intelligence
+  - Legacy
+  properties:
+  - type: Documentation
+    url: https://sourcegraph.com/docs/api
+  - type: APIReference
+    url: https://sourcegraph.com/api/graphql
+- aid: sourcegraph:sourcegraph-streaming-search-api
+  name: Sourcegraph Streaming Search API
+  description: Server-sent-event API that streams search results as they are produced, used by the Sourcegraph UI and by integrations
+    that want incremental result delivery instead of batched responses.
+  humanURL: https://sourcegraph.com/docs/api
+  tags:
+  - Streaming
+  - Search
+  - SSE
+  properties:
+  - type: Documentation
+    url: https://sourcegraph.com/docs/api
+- aid: sourcegraph:sourcegraph-analytics-api
+  name: Sourcegraph Analytics API
+  description: API surface for pulling usage and search analytics from a Sourcegraph instance.
+  humanURL: https://sourcegraph.com/docs/api
+  tags:
+  - Analytics
+  - Reporting
+  properties:
+  - type: Documentation
+    url: https://sourcegraph.com/docs/api
+- aid: sourcegraph:sourcegraph-webhooks
+  name: Sourcegraph Webhooks
+  description: Event notifications emitted by Sourcegraph instances for repository, search, and batch-change events so external
+    systems can react to changes.
+  humanURL: https://sourcegraph.com/docs/api
+  tags:
+  - Webhooks
+  - Events
+  properties:
+  - type: Documentation
+    url: https://sourcegraph.com/docs/api
+- aid: sourcegraph:sourcegraph-mcp-server
+  name: Sourcegraph MCP Server
+  description: Model Context Protocol server exposed by Sourcegraph so MCP-compatible AI agents can use Sourcegraph search
+    and code intelligence as tools.
+  humanURL: https://sourcegraph.com/docs/api
+  tags:
+  - MCP
+  - AI Agents
+  - Tooling
+  properties:
+  - type: Documentation
+    url: https://sourcegraph.com/docs/api
+  - type: MCPServer
+    url: https://sourcegraph.com/docs/api
+- aid: sourcegraph:cody
+  name: Cody by Sourcegraph
+  description: Cody is Sourcegraph's AI coding assistant. It runs inside VS Code and JetBrains IDEs, uses Sourcegraph code
+    intelligence for codebase-aware context, and can write, explain, and fix code grounded in the user's repositories.
+  humanURL: https://sourcegraph.com/cody
+  tags:
+  - AI Coding Assistant
+  - Cody
+  - IDE
+  properties:
+  - type: Documentation
+    url: https://sourcegraph.com/docs/cody
+  - type: GitHubRepository
+    url: https://github.com/sourcegraph/cody-public-snapshot
+- aid: sourcegraph:amp
+  name: Amp Coding Agent
+  description: Amp is Sourcegraph's frontier coding agent, designed for pay-as-you-go use against leading AI models. It ships
+    a CLI for macOS, Linux, WSL, and Windows, supports plugins (slash commands in .agents/commands and toolbox tools in JavaScript,
+    Python, or Bash), and is tuned for long, responsive agent threads. The amp-contrib repository ships starter slash commands
+    (bigquery, deep_search, formatting, linear, tmux, typescript-codemod, web-browser) and tool templates.
+  humanURL: https://ampcode.com
+  tags:
+  - AI Coding Agent
+  - CLI
+  - Amp
+  properties:
+  - type: Documentation
+    url: https://ampcode.com/manual
+  - type: GettingStarted
+    url: https://ampcode.com
+  - type: Pricing
+    url: https://ampcode.com/pricing
+  - type: APIReference
+    url: https://ampcode.com/models
+  - type: GitHubRepository
+    url: https://github.com/sourcegraph/amp-contrib
+- aid: sourcegraph:deep-search
+  name: Sourcegraph Deep Search
+  description: Deep Search is a natural-language code research agent that answers complex questions about a codebase by combining
+    Sourcegraph search, code intelligence, and AI.
+  humanURL: https://sourcegraph.com/docs
+  tags:
+  - AI Agent
+  - Code Research
+  - Search
+  properties:
+  - type: Documentation
+    url: https://sourcegraph.com/docs
+- aid: sourcegraph:src-cli
+  name: src CLI
+  description: src is Sourcegraph's command-line client for code search, code intelligence, batch changes, and administrative
+    operations against a Sourcegraph instance.
+  humanURL: https://sourcegraph.com/docs
+  tags:
+  - CLI
+  - Developer Tools
+  properties:
+  - type: Documentation
+    url: https://sourcegraph.com/docs
+  - type: GitHubRepository
+    url: https://github.com/sourcegraph/src-cli
+common:
+- type: Portal
+  url: https://sourcegraph.com
+- type: Documentation
+  url: https://sourcegraph.com/docs
+- type: APIReference
+  url: https://sourcegraph.com/docs/api
+- type: Blog
+  url: https://sourcegraph.com/blog
+- type: GitHubOrganization
+  url: https://github.com/sourcegraph
+- type: GitHubRepository
+  url: https://github.com/sourcegraph/sourcegraph-public-snapshot
+  name: Sourcegraph (public snapshot)
+- type: GitHubRepository
+  url: https://github.com/sourcegraph/cody-public-snapshot
+  name: Cody (public snapshot)
+- type: GitHubRepository
+  url: https://github.com/sourcegraph/amp-contrib
+  name: amp-contrib (Amp slash commands and tool templates)
+- type: GitHubRepository
+  url: https://github.com/sourcegraph/src-cli
+  name: src CLI
+- type: CLI
+  url: https://sourcegraph.com/docs
+  name: src CLI
+- type: CLI
+  url: https://ampcode.com
+  name: Amp CLI
+- type: MCPServer
+  url: https://sourcegraph.com/docs/api
+  name: Sourcegraph MCP Server
+- type: Pricing
+  url: https://ampcode.com/pricing
+- type: Support
+  url: https://sourcegraph.com/docs
+- type: Features
+  data:
+  - name: Multi-Repo Code Search
+    description: Search across every branch of every repository on every code host connected to Sourcegraph.
+  - name: Code Intelligence
+    description: Jump-to-definition, find references, hover documentation, and dependency graphs powered by SCIP indexes.
+  - name: Batch Changes
+    description: Apply large-scale code modifications across many repositories from a single specification.
+  - name: Cody AI Assistant
+    description: Codebase-aware AI assistant for writing, explaining, and fixing code inside VS Code and JetBrains.
+  - name: Amp Coding Agent
+    description: Frontier coding agent with its own CLI, plugin model, and pay-as-you-go pricing.
+  - name: Deep Search
+    description: Natural-language code research agent for complex questions about large codebases.
+  - name: Versioned REST API
+    description: Stable, backwards-compatible REST API introduced in v7.0 with per-instance OpenAPI schema.
+  - name: Streaming Search and Analytics
+    description: SSE streaming search and an analytics API for pulling usage data.
+  - name: Webhooks and MCP Server
+    description: Push events to external systems and expose Sourcegraph as a tool surface to AI agents via MCP.
+- type: UseCases
+  data:
+  - name: Code Search at Scale
+    description: Find anything across millions of lines of code across many repositories.
+  - name: AI-Assisted Coding
+    description: Use Cody and Amp to write, refactor, and fix code with codebase context.
+  - name: Large-Scale Refactors
+    description: Apply consistent changes across hundreds of repositories with Batch Changes.
+  - name: Codebase Research
+    description: Use Deep Search to answer architectural questions about an unfamiliar codebase.
+  - name: Agentic Code Tooling
+    description: Expose Sourcegraph code intelligence as MCP tools for AI agents.
+- type: Integrations
+  data:
+  - name: VS Code
+    description: Cody and Amp IDE integration for Visual Studio Code.
+  - name: JetBrains
+    description: Cody plugin for JetBrains IDEs.
+  - name: GitHub, GitLab, Bitbucket
+    description: Connects to all major code hosts.
+  - name: MCP Server
+    description: Exposes Sourcegraph as a tool to MCP-compatible AI agents.
+  - name: Webhooks
+    description: Event push to CI, chat, and ticketing systems.
+maintainers:
+- FN: Kin Lane
+  url: http://apievangelist.com
+  email: kin@apievangelist.com
