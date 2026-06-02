@@ -1,0 +1,164 @@
+aid: sourcegraph
+name: Sourcegraph Webhook and Streaming Surface Review
+description: Review of Sourcegraph's documented event-push and streaming surfaces, captured from the
+  public docs at https://sourcegraph.com/docs/. Three distinct surfaces are documented as of this review,
+  all of which are first-party Sourcegraph features (not third-party integrations). No fabricated event
+  types or endpoints are included; every entry below was verified against the docs page noted under source.
+reviewed: '2026-05-30'
+reviewer: API Evangelist
+sources:
+- name: Webhooks (overview)
+  url: https://sourcegraph.com/docs/admin/config/webhooks
+- name: Outgoing webhooks
+  url: https://sourcegraph.com/docs/admin/config/webhooks/outgoing
+- name: Incoming webhooks
+  url: https://sourcegraph.com/docs/admin/config/webhooks/incoming
+- name: Code monitoring
+  url: https://sourcegraph.com/docs/code_monitoring
+- name: Streaming search API
+  url: https://sourcegraph.com/docs/api/stream_api
+surfaces:
+- name: Outgoing webhooks (admin-configured)
+  kind: webhook
+  direction: outgoing
+  description: Sourcegraph instances can push events to external HTTP endpoints. Configured under
+    Site Admin > Configuration > Outgoing webhooks. Each webhook has a target URL, a shared secret for
+    signature verification, and a selected set of event types. Event payloads mirror Sourcegraph's GraphQL
+    types.
+  documentation: https://sourcegraph.com/docs/admin/config/webhooks/outgoing
+  event_types:
+  - name: batch_change:apply
+    description: A batch change spec was applied.
+  - name: batch_change:close
+    description: A batch change was closed.
+  - name: batch_change:delete
+    description: A batch change was deleted.
+  - name: changeset:close
+    description: A changeset was closed.
+  - name: changeset:publish
+    description: A changeset was published.
+  - name: changeset:publish_error
+    description: Publishing a changeset failed.
+  - name: changeset:update
+    description: A changeset was updated.
+  - name: changeset:update_error
+    description: Updating a changeset failed.
+  - name: user:create
+    description: A user was successfully created (versioned payload with user details and optional external account).
+  configuration:
+  - Site Admin > Configuration > Outgoing webhooks
+  - Provide target URL, shared secret, and selected event types
+  security_notes:
+  - Shared secret used to verify webhook payloads at the receiving service
+  - Docs warn that outgoing webhooks may transmit sensitive repository or code data to external services
+- name: Code monitoring webhook action
+  kind: webhook
+  direction: outgoing
+  description: Code monitors can fire a webhook action when a saved search returns new results. The
+    webhook is delivered as an HTTP POST with a JSON body describing the monitor and the new matches.
+    Configured per-monitor by the monitor's owner (not site-wide).
+  documentation: https://sourcegraph.com/docs/code_monitoring
+  delivery:
+    method: POST
+    body: JSON
+  payload_fields:
+  - monitorDescription
+  - monitorURL
+  - query
+  - 'results[].repository'
+  - 'results[].commit'
+  - 'results[].diff'
+  - 'results[].matchedDiffRanges'
+  - 'results[].message'
+  - 'results[].matchedMessageRanges'
+  alternate_actions:
+  - email
+  - slack
+  notes:
+  - Receiving service must be reachable from the Sourcegraph cluster
+- name: Incoming webhooks (from code hosts)
+  kind: webhook
+  direction: incoming
+  description: Sourcegraph receives events from connected code hosts so it can react to pushes, changeset
+    updates, and permission changes without waiting for poll cycles. Configured under Site Admin >
+    Integrations > Incoming webhooks; each webhook is named, tied to a code host type and URN, and
+    given a shared secret.
+  documentation: https://sourcegraph.com/docs/admin/config/webhooks/incoming
+  supported_hosts:
+  - name: GitHub
+    code_push: true
+    batch_changes: true
+    user_permissions: true
+  - name: GitLab
+    code_push: true
+    batch_changes: true
+    user_permissions: false
+  - name: Bitbucket Server / Data Center
+    code_push: true
+    batch_changes: true
+    user_permissions: false
+  - name: Bitbucket Cloud
+    code_push: true
+    batch_changes: true
+    user_permissions: false
+  - name: Azure DevOps
+    code_push: false
+    batch_changes: true
+    user_permissions: false
+  logging:
+  - Site Admin can view recent incoming webhook deliveries
+  - Default retention is 72 hours for non-encrypted databases
+- name: Streaming search API
+  kind: stream
+  direction: outgoing
+  description: Server-sent-events endpoint that streams search results as they are produced. Used by
+    the Sourcegraph UI and by integrations that want incremental result delivery. Not a push subscription
+    surface — clients pull by opening an SSE connection per query.
+  documentation: https://sourcegraph.com/docs/api/stream_api
+  endpoint:
+    path: /.api/search/stream
+    method: GET
+    transport: Server-Sent Events
+  query_parameters:
+  - name: q
+    description: Search query in Sourcegraph syntax
+  - name: v
+    description: Query syntax version (default V3)
+  - name: t
+    description: Pattern type — keyword, standard, or regexp
+  - name: max-line-len
+    description: Truncate context lines to specified length
+  - name: cm
+    description: Enable chunk matches (boolean)
+  - name: display
+    description: Maximum matches to return
+  - name: cl
+    description: Context lines around matches
+  event_types:
+  - name: matches
+    description: Content, path, commit, diff, symbol, or repository result chunks
+  - name: progress
+    description: Match counts, repository counts, and timing statistics
+  - name: filters
+    description: Suggested filter options to refine the search
+  - name: alert
+    description: Info, warning, or error messages
+  - name: done
+    description: Signals stream completion
+  authentication:
+  - Sourcegraph access token in Authorization header
+  - OAuth token with user:all scope
+findings:
+- Sourcegraph documents three distinct push-style surfaces (outgoing webhooks, code monitoring webhook
+  action, SSE streaming search) plus an incoming webhook surface for code hosts.
+- Outgoing webhooks are admin-scoped and currently cover batch changes, changesets, and user creation —
+  not search alerts. Search-alert-style notifications are delivered via the per-user code monitoring
+  webhook action instead.
+- No public API for programmatically managing outgoing webhooks was found on the docs surface
+  reviewed; management is described as a Site Admin UI workflow.
+- The streaming search API is a pull-initiated SSE stream rather than a registered push subscription;
+  it is the closest thing Sourcegraph documents to a real-time event feed.
+maintainers:
+- FN: Kin Lane
+  url: http://apievangelist.com
+  email: kin@apievangelist.com

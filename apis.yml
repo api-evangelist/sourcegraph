@@ -19,7 +19,7 @@ tags:
 - MCP
 url: https://raw.githubusercontent.com/api-evangelist/sourcegraph/refs/heads/main/apis.yml
 created: '2026-05-23'
-modified: '2026-05-23'
+modified: '2026-05-30'
 specificationVersion: '0.19'
 apis:
 - aid: sourcegraph:sourcegraph-rest-api
@@ -55,15 +55,16 @@ apis:
 - aid: sourcegraph:sourcegraph-streaming-search-api
   name: Sourcegraph Streaming Search API
   description: Server-sent-event API that streams search results as they are produced, used by the Sourcegraph UI and by integrations
-    that want incremental result delivery instead of batched responses.
-  humanURL: https://sourcegraph.com/docs/api
+    that want incremental result delivery instead of batched responses. Exposed per-instance at /.api/search/stream with event
+    types matches, progress, filters, alert, and done.
+  humanURL: https://sourcegraph.com/docs/api/stream_api
   tags:
   - Streaming
   - Search
   - SSE
   properties:
   - type: Documentation
-    url: https://sourcegraph.com/docs/api
+    url: https://sourcegraph.com/docs/api/stream_api
 - aid: sourcegraph:sourcegraph-analytics-api
   name: Sourcegraph Analytics API
   description: API surface for pulling usage and search analytics from a Sourcegraph instance.
@@ -76,15 +77,30 @@ apis:
     url: https://sourcegraph.com/docs/api
 - aid: sourcegraph:sourcegraph-webhooks
   name: Sourcegraph Webhooks
-  description: Event notifications emitted by Sourcegraph instances for repository, search, and batch-change events so external
-    systems can react to changes.
-  humanURL: https://sourcegraph.com/docs/api
+  description: Sourcegraph instances expose three distinct webhook surfaces. Outgoing webhooks (Site Admin > Configuration
+    > Outgoing webhooks) push batch_change, changeset, and user:create events to external HTTP endpoints. The code monitoring
+    webhook action delivers per-monitor JSON POSTs when a saved search returns new results. Incoming webhooks (Site Admin >
+    Integrations > Incoming webhooks) receive push, batch-change, and permission events from GitHub, GitLab, Bitbucket Server,
+    Bitbucket Cloud, and Azure DevOps.
+  humanURL: https://sourcegraph.com/docs/admin/config/webhooks
   tags:
   - Webhooks
   - Events
+  - Outgoing Webhooks
+  - Incoming Webhooks
+  - Code Monitoring
   properties:
   - type: Documentation
-    url: https://sourcegraph.com/docs/api
+    url: https://sourcegraph.com/docs/admin/config/webhooks
+  - type: Documentation
+    url: https://sourcegraph.com/docs/admin/config/webhooks/outgoing
+    name: Outgoing Webhooks
+  - type: Documentation
+    url: https://sourcegraph.com/docs/admin/config/webhooks/incoming
+    name: Incoming Webhooks
+  - type: Documentation
+    url: https://sourcegraph.com/docs/code_monitoring
+    name: Code Monitoring Webhook Action
 - aid: sourcegraph:sourcegraph-mcp-server
   name: Sourcegraph MCP Server
   description: Model Context Protocol server exposed by Sourcegraph so MCP-compatible AI agents can use Sourcegraph search
