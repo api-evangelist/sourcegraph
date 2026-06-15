@@ -1,11 +1,6 @@
 aid: sourcegraph
 name: Sourcegraph
-description: Sourcegraph is a code intelligence platform that lets developers and AI agents search, navigate, understand,
-  and modify code across very large, multi-repo codebases. The platform pairs classic code search and code intelligence (jump-to-definition,
-  references, batch changes) with AI products — Cody (in-IDE AI coding assistant), Amp (frontier coding agent with its own
-  CLI and plugin system), and Deep Search (a natural-language code research agent). Sourcegraph instances expose a versioned
-  external REST API introduced in v7.0, a streaming search API, an analytics API, webhooks, an MCP server, and the historical
-  GraphQL API kept available for migration. The src CLI is the long-standing command-line client.
+description: Sourcegraph is a code intelligence platform that lets developers and AI agents search, navigate, understand, and modify code across very large, multi-repo codebases. The platform pairs classic code search and code intelligence (jump-to-definition, references, batch changes) with AI products — Cody (in-IDE AI coding assistant), Amp (frontier coding agent with its own CLI and plugin system), and Deep Search (a natural-language code research agent). Sourcegraph instances expose a versioned external REST API introduced in v7.0, a streaming search API, an analytics API, webhooks, an MCP server, and the historical GraphQL API kept available for migration. The src CLI is the long-standing command-line client.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
@@ -24,9 +19,7 @@ specificationVersion: '0.19'
 apis:
 - aid: sourcegraph:sourcegraph-rest-api
   name: Sourcegraph REST API
-  description: Versioned external REST API introduced in Sourcegraph 7.0 and intended as the stable integration surface going
-    forward. Each Sourcegraph instance exposes its own /api-reference path where the live OpenAPI schema is published. Backwards
-    compatibility is guaranteed within a major version.
+  description: Versioned external REST API introduced in Sourcegraph 7.0 and intended as the stable integration surface going forward. Each Sourcegraph instance exposes its own /api-reference path where the live OpenAPI schema is published. Backwards compatibility is guaranteed within a major version.
   humanURL: https://sourcegraph.com/docs/api
   tags:
   - REST API
@@ -39,9 +32,7 @@ apis:
     url: https://sourcegraph.com/api-reference
 - aid: sourcegraph:sourcegraph-graphql-api
   name: Sourcegraph GraphQL API
-  description: The historical GraphQL API used by most Sourcegraph integrations to date. It is still available but Sourcegraph
-    now recommends migrating to the versioned REST API for compatibility guarantees. Also exposed as a debug surface inside
-    each instance.
+  description: The historical GraphQL API used by most Sourcegraph integrations to date. It is still available but Sourcegraph now recommends migrating to the versioned REST API for compatibility guarantees. Also exposed as a debug surface inside each instance.
   humanURL: https://sourcegraph.com/api/graphql
   tags:
   - GraphQL
@@ -52,11 +43,11 @@ apis:
     url: https://sourcegraph.com/docs/api
   - type: APIReference
     url: https://sourcegraph.com/api/graphql
+  - url: graphql/sourcegraph-graphql.md
+    type: GraphQL
 - aid: sourcegraph:sourcegraph-streaming-search-api
   name: Sourcegraph Streaming Search API
-  description: Server-sent-event API that streams search results as they are produced, used by the Sourcegraph UI and by integrations
-    that want incremental result delivery instead of batched responses. Exposed per-instance at /.api/search/stream with event
-    types matches, progress, filters, alert, and done.
+  description: Server-sent-event API that streams search results as they are produced, used by the Sourcegraph UI and by integrations that want incremental result delivery instead of batched responses. Exposed per-instance at /.api/search/stream with event types matches, progress, filters, alert, and done.
   humanURL: https://sourcegraph.com/docs/api/stream_api
   tags:
   - Streaming
@@ -77,11 +68,7 @@ apis:
     url: https://sourcegraph.com/docs/api
 - aid: sourcegraph:sourcegraph-webhooks
   name: Sourcegraph Webhooks
-  description: Sourcegraph instances expose three distinct webhook surfaces. Outgoing webhooks (Site Admin > Configuration
-    > Outgoing webhooks) push batch_change, changeset, and user:create events to external HTTP endpoints. The code monitoring
-    webhook action delivers per-monitor JSON POSTs when a saved search returns new results. Incoming webhooks (Site Admin >
-    Integrations > Incoming webhooks) receive push, batch-change, and permission events from GitHub, GitLab, Bitbucket Server,
-    Bitbucket Cloud, and Azure DevOps.
+  description: Sourcegraph instances expose three distinct webhook surfaces. Outgoing webhooks (Site Admin > Configuration > Outgoing webhooks) push batch_change, changeset, and user:create events to external HTTP endpoints. The code monitoring webhook action delivers per-monitor JSON POSTs when a saved search returns new results. Incoming webhooks (Site Admin > Integrations > Incoming webhooks) receive push, batch-change, and permission events from GitHub, GitLab, Bitbucket Server, Bitbucket Cloud, and Azure DevOps.
   humanURL: https://sourcegraph.com/docs/admin/config/webhooks
   tags:
   - Webhooks
@@ -103,8 +90,7 @@ apis:
     name: Code Monitoring Webhook Action
 - aid: sourcegraph:sourcegraph-mcp-server
   name: Sourcegraph MCP Server
-  description: Model Context Protocol server exposed by Sourcegraph so MCP-compatible AI agents can use Sourcegraph search
-    and code intelligence as tools.
+  description: Model Context Protocol server exposed by Sourcegraph so MCP-compatible AI agents can use Sourcegraph search and code intelligence as tools.
   humanURL: https://sourcegraph.com/docs/api
   tags:
   - MCP
@@ -117,8 +103,7 @@ apis:
     url: https://sourcegraph.com/docs/api
 - aid: sourcegraph:cody
   name: Cody by Sourcegraph
-  description: Cody is Sourcegraph's AI coding assistant. It runs inside VS Code and JetBrains IDEs, uses Sourcegraph code
-    intelligence for codebase-aware context, and can write, explain, and fix code grounded in the user's repositories.
+  description: Cody is Sourcegraph's AI coding assistant. It runs inside VS Code and JetBrains IDEs, uses Sourcegraph code intelligence for codebase-aware context, and can write, explain, and fix code grounded in the user's repositories.
   humanURL: https://sourcegraph.com/cody
   tags:
   - AI Coding Assistant
@@ -131,10 +116,7 @@ apis:
     url: https://github.com/sourcegraph/cody-public-snapshot
 - aid: sourcegraph:amp
   name: Amp Coding Agent
-  description: Amp is Sourcegraph's frontier coding agent, designed for pay-as-you-go use against leading AI models. It ships
-    a CLI for macOS, Linux, WSL, and Windows, supports plugins (slash commands in .agents/commands and toolbox tools in JavaScript,
-    Python, or Bash), and is tuned for long, responsive agent threads. The amp-contrib repository ships starter slash commands
-    (bigquery, deep_search, formatting, linear, tmux, typescript-codemod, web-browser) and tool templates.
+  description: Amp is Sourcegraph's frontier coding agent, designed for pay-as-you-go use against leading AI models. It ships a CLI for macOS, Linux, WSL, and Windows, supports plugins (slash commands in .agents/commands and toolbox tools in JavaScript, Python, or Bash), and is tuned for long, responsive agent threads. The amp-contrib repository ships starter slash commands (bigquery, deep_search, formatting, linear, tmux, typescript-codemod, web-browser) and tool templates.
   humanURL: https://ampcode.com
   tags:
   - AI Coding Agent
@@ -153,8 +135,7 @@ apis:
     url: https://github.com/sourcegraph/amp-contrib
 - aid: sourcegraph:deep-search
   name: Sourcegraph Deep Search
-  description: Deep Search is a natural-language code research agent that answers complex questions about a codebase by combining
-    Sourcegraph search, code intelligence, and AI.
+  description: Deep Search is a natural-language code research agent that answers complex questions about a codebase by combining Sourcegraph search, code intelligence, and AI.
   humanURL: https://sourcegraph.com/docs
   tags:
   - AI Agent
@@ -165,8 +146,7 @@ apis:
     url: https://sourcegraph.com/docs
 - aid: sourcegraph:src-cli
   name: src CLI
-  description: src is Sourcegraph's command-line client for code search, code intelligence, batch changes, and administrative
-    operations against a Sourcegraph instance.
+  description: src is Sourcegraph's command-line client for code search, code intelligence, batch changes, and administrative operations against a Sourcegraph instance.
   humanURL: https://sourcegraph.com/docs
   tags:
   - CLI
