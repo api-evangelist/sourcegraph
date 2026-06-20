@@ -2,7 +2,7 @@ aid: sourcegraph
 name: Sourcegraph
 description: Sourcegraph is a code intelligence platform that lets developers and AI agents search, navigate, understand, and modify code across very large, multi-repo codebases. The platform pairs classic code search and code intelligence (jump-to-definition, references, batch changes) with AI products — Cody (in-IDE AI coding assistant), Amp (frontier coding agent with its own CLI and plugin system), and Deep Search (a natural-language code research agent). Sourcegraph instances expose a versioned external REST API introduced in v7.0, a streaming search API, an analytics API, webhooks, an MCP server, and the historical GraphQL API kept available for migration. The src CLI is the long-standing command-line client.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Code Intelligence
 - Code Search
