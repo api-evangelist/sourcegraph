@@ -157,6 +157,12 @@ apis:
   - type: GitHubRepository
     url: https://github.com/sourcegraph/src-cli
 common:
+- type: TrustCenter
+  url: security/sourcegraph-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/sourcegraph-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/sourcegraph-domain-security.yml
 - type: Portal
   url: https://sourcegraph.com
 - type: Documentation
