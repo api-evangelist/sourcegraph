@@ -169,6 +169,9 @@ apis:
   - type: GitHubRepository
     url: https://github.com/sourcegraph/src-cli
 common:
+- type: License
+  name: Apache-2.0
+  url: https://github.com/sourcegraph/cody-public-snapshot/blob/main/LICENSE
 - type: TrustCenter
   url: security/sourcegraph-trust-center.yml
 - type: VulnerabilityDisclosure
