@@ -27,7 +27,7 @@ tags:
 url: https://raw.githubusercontent.com/api-evangelist/sourcegraph/refs/heads/main/apis.yml
 created: '2026-05-23'
 modified: '2026-05-30'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: sourcegraph:sourcegraph-rest-api
   name: Sourcegraph REST API
