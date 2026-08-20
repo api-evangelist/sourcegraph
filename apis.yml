@@ -19,6 +19,15 @@ tags:
 - Code Intelligence
 - Code Search
 - Cody
+- AMP
+- AI Coding Agent
+- GraphQL
+- REST API
+- MCP
+tags_raw:
+- Code Intelligence
+- Code Search
+- Cody
 - Amp
 - AI Coding Agent
 - GraphQL
@@ -83,6 +92,12 @@ apis:
   description: Sourcegraph instances expose three distinct webhook surfaces. Outgoing webhooks (Site Admin > Configuration > Outgoing webhooks) push batch_change, changeset, and user:create events to external HTTP endpoints. The code monitoring webhook action delivers per-monitor JSON POSTs when a saved search returns new results. Incoming webhooks (Site Admin > Integrations > Incoming webhooks) receive push, batch-change, and permission events from GitHub, GitLab, Bitbucket Server, Bitbucket Cloud, and Azure DevOps.
   humanURL: https://sourcegraph.com/docs/admin/config/webhooks
   tags:
+  - Webhook
+  - Event
+  - Outgoing Webhooks
+  - Incoming Webhooks
+  - Code Monitoring
+  tags_raw:
   - Webhooks
   - Events
   - Outgoing Webhooks
@@ -131,6 +146,10 @@ apis:
   description: Amp is Sourcegraph's frontier coding agent, designed for pay-as-you-go use against leading AI models. It ships a CLI for macOS, Linux, WSL, and Windows, supports plugins (slash commands in .agents/commands and toolbox tools in JavaScript, Python, or Bash), and is tuned for long, responsive agent threads. The amp-contrib repository ships starter slash commands (bigquery, deep_search, formatting, linear, tmux, typescript-codemod, web-browser) and tool templates.
   humanURL: https://ampcode.com
   tags:
+  - AI Coding Agent
+  - CLI
+  - AMP
+  tags_raw:
   - AI Coding Agent
   - CLI
   - Amp
