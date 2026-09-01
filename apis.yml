@@ -32,7 +32,7 @@ tags:
 - Code Intelligence
 - Code Search
 - Cody
-- Amp
+- AMP
 - AI Coding Agent
 - GraphQL
 - REST API
@@ -161,7 +161,7 @@ apis:
   tags:
   - AI Coding Agent
   - CLI
-  - Amp
+  - AMP
   tags_raw:
   - AI Coding Agent
   - CLI
