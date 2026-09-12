@@ -201,6 +201,8 @@ apis:
   - type: GitHubRepository
     url: https://github.com/sourcegraph/src-cli
 common:
+- type: Website
+  url: https://www.sourcegraph.com/
 - type: IssueTracker
   url: https://github.com/sourcegraph/cody-public-snapshot/issues
 - type: Releases
