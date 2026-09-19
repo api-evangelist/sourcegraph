@@ -33,7 +33,7 @@ tags:
 - Code Search
 - Cody
 - AMP
-- AI Coding Agent
+- AI Coding Agents
 - GraphQL
 - REST API
 - MCP
@@ -159,7 +159,7 @@ apis:
   description: Amp is Sourcegraph's frontier coding agent, designed for pay-as-you-go use against leading AI models. It ships a CLI for macOS, Linux, WSL, and Windows, supports plugins (slash commands in .agents/commands and toolbox tools in JavaScript, Python, or Bash), and is tuned for long, responsive agent threads. The amp-contrib repository ships starter slash commands (bigquery, deep_search, formatting, linear, tmux, typescript-codemod, web-browser) and tool templates.
   humanURL: https://ampcode.com
   tags:
-  - AI Coding Agent
+  - AI Coding Agents
   - CLI
   - AMP
   tags_raw:
@@ -182,6 +182,10 @@ apis:
   description: Deep Search is a natural-language code research agent that answers complex questions about a codebase by combining Sourcegraph search, code intelligence, and AI.
   humanURL: https://sourcegraph.com/docs
   tags:
+  - AI Agents
+  - Code Research
+  - Search
+  tags_raw:
   - AI Agent
   - Code Research
   - Search
