@@ -1,0 +1,88 @@
+generated: '2026-10-14'
+method: searched
+checked:
+- https://github.com/marketplace?type=actions
+- https://marketplace.atlassian.com/
+- https://marketplace.visualstudio.com/vscode
+- https://plugins.jetbrains.com/
+marketplace_apps: []
+edges:
+- partner_name: GitHub Marketplace (actions)
+  partner: github-actions
+  partner_match: aggregator
+  type: marketplace
+  marketplace: github-actions
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://github.com/marketplace/actions/codenotify
+  listing_count: 5
+  apps:
+  - codenotify
+  - Sourcegraph Rust LSIF Indexer
+  - Sourcegraph Go LSIF Indexer
+  - Sourcegraph Dart LSIF Indexer
+  - Sourcegraph LSIF Uploader
+  publisher_name: Sourcegraph
+  badges:
+  - Verified creator
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
+- partner_name: Atlassian Marketplace
+  partner: atlassian
+  partner_match: aggregator
+  type: marketplace
+  marketplace: atlassian
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://marketplace.atlassian.com/vendors/1222948/sourcegraph-inc
+  listing_count: 2
+  apps:
+  - Sourcegraph for Bitbucket
+  - Sourcegraph Cody
+  publisher_name: Sourcegraph, Inc
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
+- partner_name: JetBrains Marketplace
+  partner: jetbrains
+  partner_match: aggregator
+  type: marketplace
+  marketplace: jetbrains
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://plugins.jetbrains.com/vendor/sourcegraph
+  listing_count: 1
+  apps:
+  - 'Cody: AI Code Assistant'
+  publisher_name: Sourcegraph
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
+- partner_name: Visual Studio Code Marketplace
+  partner: vs-code-marketplace
+  partner_match: aggregator
+  type: marketplace
+  marketplace: vscode
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://marketplace.visualstudio.com/publishers/sourcegraph
+  listing_count: 5
+  apps:
+  - 'Cody: AI Code Assistant'
+  - Search by Sourcegraph
+  - Amp (Research Preview)
+  - JavaScript and TypeScript IntelliSense
+  - Sourcegraph Theme
+  publisher_name: Sourcegraph
+  badges:
+  - Verified publisher
+  - Verified domain
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
+source:
+- https://github.com/marketplace?type=actions
+- https://marketplace.atlassian.com/
+- https://marketplace.visualstudio.com/vscode
+- https://plugins.jetbrains.com/
