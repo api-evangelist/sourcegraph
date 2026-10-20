@@ -51,3 +51,57 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: sourcegraph-scoop
+  label: Scoop
+  partner_name: Scoop
+  category: official CLI (Scoop)
+  type: register
+  channel: package-registry
+  evidence: https://github.com/ScoopInstaller/Main/blob/master/bucket/sourcegraph-cli.json
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: Scoop (public package index)
+    spec_file: null
+    packages:
+    - name: sourcegraph-cli
+      kind: main
+      version: 8.0.0
+      released: null
+      lapsed: false
+      page: https://github.com/ScoopInstaller/Main/blob/master/bucket/sourcegraph-cli.json
+      cli: 'scoop description: Command line interface to Sourcegraph'
+      repo_leg: domain:sourcegraph.com
+      publisher_leg: artifact-github-org:sourcegraph
+      matched_by: domain
+    current: true
+    signal_note: 'the provider''s own command-line tool on a package manager: distribution, not an integration;
+      lapsed = no release in 24 months or deprecated / disabled by the manager'
+    detected_by: sweep-official-clis.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
+- slug: sourcegraph-claude-plugins-dev
+  label: claude-plugins.dev
+  partner_name: claude-plugins.dev
+  category: Agent Skills register
+  type: register
+  channel: standard-directory
+  evidence: https://claude-plugins.dev/skills/@sourcegraph/amp-contrib
+  source: edge
+  relationship: compatible
+  contract_reference:
+    register: claude-plugins.dev (public sitemap / list)
+    spec_file: null
+    standard: Agent Skills (agentskills.io)
+    role: agent-skills-listing
+    matched_org: sourcegraph
+    matched_by: org-profile-domain:sourcegraph.com
+    sample_skills:
+    - bigquery
+    - skill.md
+    - web-browser
+    detected_by: sweep-agent-skills.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null

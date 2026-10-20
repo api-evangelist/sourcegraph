@@ -1,17 +1,23 @@
 generated: '2026-10-14'
 method: searched
 checked:
+- https://github.com/marketplace?type=actions
+- https://marketplace.atlassian.com/
+- https://marketplace.visualstudio.com/vscode
+- https://plugins.jetbrains.com/
 - https://cdn.winget.microsoft.com/cache
 - https://formulae.brew.sh/api/cask.json
 - https://formulae.brew.sh/api/formula.json
 - https://github.com/ScoopInstaller/Extras
 - https://github.com/ScoopInstaller/Main
-- https://github.com/marketplace?type=actions
-- https://marketplace.atlassian.com/
-- https://marketplace.visualstudio.com/vscode
-- https://plugins.jetbrains.com/
 - https://pypi.org/pypi
 - https://registry.npmjs.org
+- https://api.github.com
+- https://claude-plugins.dev/sitemap.xml
+- https://github.com/VoltAgent/awesome-agent-skills
+- https://officialskills.sh/sitemap.xml
+- https://skillsmp.com/sitemap.xml
+- https://www.skills.sh/sitemap.xml
 marketplace_apps: []
 edges:
 - partner_name: GitHub Marketplace (actions)
@@ -117,6 +123,39 @@ edges:
     detected_by: sweep-official-clis.py
     detected: '2026-10-20'
   detected_by: sweep-official-clis.py
+  first_seen: '2026-10-20'
+- partner_name: claude-plugins.dev
+  partner: null
+  partner_match: register
+  type: register
+  direction: partner-built
+  category: Agent Skills register
+  evidence: https://claude-plugins.dev/skills/@sourcegraph/amp-contrib
+  channel: standard-directory
+  relationship: compatible
+  shape: agent-skills
+  evidence_kind: register-listing
+  degree: listed
+  report_only: true
+  agent_skills_register:
+    repos:
+    - sourcegraph/amp-contrib
+    repo_verified: false
+    signal_note: the provider's own-org repos the register lists; skill / install counts never read
+  contract_reference:
+    register: claude-plugins.dev (public sitemap / list)
+    spec_file: null
+    standard: Agent Skills (agentskills.io)
+    role: agent-skills-listing
+    matched_org: sourcegraph
+    matched_by: org-profile-domain:sourcegraph.com
+    sample_skills:
+    - bigquery
+    - skill.md
+    - web-browser
+    detected_by: sweep-agent-skills.py
+    detected: '2026-10-20'
+  detected_by: sweep-agent-skills.py
   first_seen: '2026-10-20'
 source:
 - https://github.com/marketplace?type=actions
